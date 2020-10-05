@@ -153,7 +153,8 @@ async function DownloadIMages() {
 async function AnalyzeImagesLocally() {
 
     console.log('downloading images. . . ');
-    await DownloadIMages();
+    // await DownloadIMages();
+    // let url = await getLinks();
 
 
     console.log('analyzing images. . .');
@@ -199,7 +200,7 @@ async function AnalyzeImagesLocally() {
                     }
 
                     orariJson[dirent.name.split('.')[0]] = {}
-                    orariJson[dirent.name.split('.')[0]][`${dirent.name.split('.')[0]}url`] = 'TODO';
+                    orariJson[dirent.name.split('.')[0]][`${dirent.name.split('.')[0]}url`] = url[dirent.name.split('.')[0]];
                     orariJson[dirent.name.split('.')[0]][`${dirent.name.split('.')[0]}`] = orari;
 
                 })
@@ -289,9 +290,10 @@ async function AnalyzeImagesOnline() {
 async function start() {
     //await getLinks()
     // await getImages()
-    // await AnalyzeImagesLocally()
-    await AnalyzeImagesOnline()
+    await AnalyzeImagesLocally()
+        // await AnalyzeImagesOnline()
     console.log(orariJson);
+    fs.writeFileSync('orari.json', JSON.stringify(orariJson))
 
 }
 
