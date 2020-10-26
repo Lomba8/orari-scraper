@@ -271,7 +271,7 @@ async function AnalyzeImagesOnline() {
         let totaleGiorni = 6;
         let doesSabato = [];
         for (let sabato = 0; sabato < 5; sabato++) {
-            let materia = image.getPixelColor(65 + 113 * 5, 78 + 78 * sabato)
+            let materia = image.getPixelColor(65 + 113 * 6, 78 + 78 * sabato)
             doesSabato.push(colors[materia])
         }
         if (doesSabato.every((val, i, arr) => val === arr[0])) totaleGiorni = 5;
@@ -324,11 +324,12 @@ async function AnalyzeImagesOnline() {
 async function start() {
     //await getLinks()
     // await getImages()
+    // await DownloadIMages()
     // await AnalyzeImagesLocally()
     await AnalyzeImagesOnline()
-        // console.log(orariJson);
-    console.log(orariJson)
-        // fs.writeFileSync('orari.json', JSON.stringify(orariJson))
+    console.log(orariJson);
+    // console.log(orariJson)
+    // fs.writeFileSync('orari.json', JSON.stringify(orariJson))
 
 }
 
