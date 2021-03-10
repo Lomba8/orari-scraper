@@ -162,9 +162,9 @@ async function crop(image, giorno, ora, name, entraDopo) {
 
         if (entraDopo) { newImage = await newImage.crop(62 + 118 * giorno, 53 + 67 * ora, 90, 61) } else { newImage = await newImage.crop(62 + 118 * giorno, (ora == 6 ? 73 : 72) + 67 * ora, 90, 61) }
 
-        newImage.getBuffer(Jimp.MIME_PNG, (err, buffer) => {
-            fs.writeFileSync('test/' + ` ora: ${giorno}- giorno: ${ora} ` + name, buffer)
-        })
+        // newImage.getBuffer(Jimp.MIME_PNG, (err, buffer) => {
+        //     fs.writeFileSync('test/' + ` ora: ${giorno}- giorno: ${ora} ` + name, buffer)
+        // })
         return newImage;
     } catch (error) {
         throw ('ERRORE IN CROP(): ' + error)
@@ -310,9 +310,9 @@ async function AnalyzeImagesOnline() {
 
             if (entraDopo.every((val, i, arr) => val === arr[0])) image = await image.crop(0, 154, 800, 600 - 154);
 
-            image.getBuffer(Jimp.MIME_PNG, (err, buffer) => {
-                fs.writeFileSync('cropped/' + classe + '.png', buffer)
-            })
+            // image.getBuffer(Jimp.MIME_PNG, (err, buffer) => {
+            //     fs.writeFileSync('cropped/' + classe + '.png', buffer)
+            // })
 
             for (let ora = 0; ora < ore; ora++) { //! sono 5 le ore su cui loopare perche ci sono le lezioni ridotte per covid se no sarebbero 6 
                 // console.log(`ora numero: ${giorno}`);
